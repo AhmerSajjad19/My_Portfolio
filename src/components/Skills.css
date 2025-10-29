@@ -383,3 +383,14 @@
     font-size: 0.85rem;
   }
 }
+.skill-icon {
+  font-size: 2rem;
+  margin-right: 0.8rem;
+}
+
+.skill-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: flex-start;
+}

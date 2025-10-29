@@ -1,65 +1,72 @@
 import React from 'react';
 import './Skills.css';
+import {
+  SiJavascript,
+  SiReact,
+  SiNodedotjs,
+  SiPython,
+  SiHtml5,
+  SiCss3,
+  SiMongodb,
+  SiMysql,
+  SiExpo,
+  SiFirebase,
+  SiFigma,
+  SiCanva,
+  SiGooglecolab
+} from 'react-icons/si';
+import { FaCode, FaPencilRuler, FaBrain, FaComments, FaUsers, FaUserTie, FaRegClock, FaLightbulb, FaHandsHelping, FaChartLine } from 'react-icons/fa';
 
 const Skills = () => {
   const technicalSkills = [
-    { name: 'JavaScript ES6', level: 90 },
-    { name: 'React.js', level: 85 },
-    { name: 'Node.js', level: 80 },
-    { name: 'Python', level: 85 },
-    { name: 'HTML5', level: 95 },
-    { name: 'CSS3', level: 90 },
-    { name: 'MongoDB', level: 75 },
-    { name: 'MySQL', level: 80 },
-    { name: 'C#', level: 70 },
-    { name: 'React Native', level: 75 },
-    { name: 'Expo', level: 70 },
-    { name: 'Firebase', level: 75 }
+    { name: 'JavaScript ES6', icon: <SiJavascript color="#F7DF1E" /> },
+    { name: 'React.js', icon: <SiReact color="#61DBFB" /> },
+    { name: 'Node.js', icon: <SiNodedotjs color="#3C873A" /> },
+    { name: 'Python', icon: <SiPython color="#3776AB" /> },
+    { name: 'HTML5', icon: <SiHtml5 color="#E34F26" /> },
+    { name: 'CSS3', icon: <SiCss3 color="#1572B6" /> },
+    { name: 'MongoDB', icon: <SiMongodb color="#47A248" /> },
+    { name: 'MySQL', icon: <SiMysql color="#4479A1" /> },
+    { name: 'C#', icon: <FaCode color="#68217A" /> },
+    { name: 'React Native', icon: <SiReact color="#61DBFB" /> },
+    { name: 'Expo', icon: <SiExpo color="#000000" /> },
+    { name: 'Firebase', icon: <SiFirebase color="#FFCA28" /> },
   ];
 
   const designTools = [
-    { name: 'Figma', level: 85 },
-    { name: 'Canva', level: 90 },
-    { name: 'Balsamiq', level: 80 },
-    { name: 'VS Code', level: 95 },
-    { name: 'Google Colab', level: 85 }
+    { name: 'Figma', icon: <SiFigma color="#F24E1E" /> },
+    { name: 'Canva', icon: <SiCanva color="#00C4CC" /> },
+    { name: 'Balsamiq', icon: <FaPencilRuler color="#A60000" /> },
+    { name: 'Visual Studio Code', icon: <FaCode color="#007ACC" /> },
+    { name: 'Google Colab', icon: <SiGooglecolab color="#F9AB00" /> },
   ];
 
+  // ✅ Updated softSkills with relevant icons
   const softSkills = [
-    'Problem Solving',
-    'Critical Thinking',
-    'Team Collaboration',
-    'Communication',
-    'Growth Mindset',
-    'Adaptability',
-    'Time Management',
-    'Leadership'
+    { name: 'Problem Solving', icon: <FaBrain color="#FFB703" /> },
+    { name: 'Critical Thinking', icon: <FaLightbulb color="#8ECAE6" /> },
+    { name: 'Team Collaboration', icon: <FaUsers color="#219EBC" /> },
+    { name: 'Communication', icon: <FaComments color="#023047" /> },
+    { name: 'Growth Mindset', icon: <FaChartLine color="#FB8500" /> },
+    { name: 'Adaptability', icon: <FaHandsHelping color="#219EBC" /> },
+    { name: 'Time Management', icon: <FaRegClock color="#FFB703" /> },
+    { name: 'Leadership', icon: <FaUserTie color="#8ECAE6" /> },
   ];
 
-  const SkillBar = ({ skill, level }) => (
+  const SkillIconItem = ({ name, icon }) => (
     <div className="skill-item">
       <div className="skill-header">
-        <span className="skill-name">{skill}</span>
-        <span className="skill-percentage">{level}%</span>
-      </div>
-      <div className="skill-bar">
-        <div 
-          className="skill-progress" 
-          style={{ width: `${level}%` }}
-        ></div>
+        <div className="skill-icon">{icon}</div>
+        <span className="skill-name">{name}</span>
       </div>
     </div>
   );
 
+  // ✅ Updated SoftSkillItem to use icons dynamically
   const SoftSkillItem = ({ skill }) => (
     <div className="soft-skill-item">
-      <div className="soft-skill-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M9 12l2 2 4-4"></path>
-          <circle cx="12" cy="12" r="10"></circle>
-        </svg>
-      </div>
-      <span>{skill}</span>
+      <div className="soft-skill-icon">{skill.icon}</div>
+      <span>{skill.name}</span>
     </div>
   );
 
@@ -88,7 +95,7 @@ const Skills = () => {
             </div>
             <div className="skills-grid">
               {technicalSkills.map((skill, index) => (
-                <SkillBar key={index} skill={skill.name} level={skill.level} />
+                <SkillIconItem key={index} name={skill.name} icon={skill.icon} />
               ))}
             </div>
           </div>
@@ -107,7 +114,7 @@ const Skills = () => {
             </div>
             <div className="skills-grid">
               {designTools.map((tool, index) => (
-                <SkillBar key={index} skill={tool.name} level={tool.level} />
+                <SkillIconItem key={index} name={tool.name} icon={tool.icon} />
               ))}
             </div>
           </div>
